@@ -12,7 +12,7 @@ The Numbers file is setup with filtering out watched and uninterested session an
 
 Like many I'm a completionist, love to tick a box and with this years the new shorter format its possible to learn more in less time. So I think having a birds-eye view of all the sessions helps plan and focus your energy on what matters.
 
-Bare in mind there is ~70h of content from WWDC, so be brutal in your selection and pace yourself!
+Bear in mind there is ~70h of content from WWDC, so be brutal in your selection and pace yourself!
 
 I found going through an initial pass (spacebar helps for speed) to remove the stuff you aren't interested in helps make the list much more manageable.
 
