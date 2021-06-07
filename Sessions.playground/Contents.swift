@@ -2,7 +2,9 @@ import UIKit
 import PlaygroundSupport
 
 let file = "contents.json"
-let url = URL(string: "https://api2020.wwdc.io/contents.json")!
+let url = URL(string: "https://api2021.wwdc.io/contents.json")!
+let eventID = "wwdc2021"
+let outputFile = "WWDC21"
 
 var useWeb = true
 
@@ -27,7 +29,7 @@ if useWeb {
 semaphore.wait()
 contents = jsonData.contents
 
-var outputString = "Session #; Title; Day; Length; Link; Favourite; Watched; Uninterested;\n"
+var outputString = "Session #; Title; Date; Day; Length; Link; Favourite; Watched; Uninterested;\n"
 
 let dateFormatter = DateFormatter()
 dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
@@ -35,23 +37,22 @@ dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
 let printFormatter = DateFormatter()
 printFormatter.dateFormat = "dd"
 
+let dayOfWeekFormatter = DateFormatter()
+dayOfWeekFormatter.dateFormat = "E"
+
+
+func dateToDayOfTheWeek(for date: String) -> String {
+    let start = dateFormatter.date(from: date)!
+    return dayOfWeekFormatter.string(from: start)
+}
 
 func dateToDay(for date: String) -> String {
     let start = dateFormatter.date(from: date)!
-    switch (printFormatter.string(from: start)) {
-    
-    case "22": return "Mon"
-    case "23": return "Tues"
-    case "24": return "Wed"
-    case "25": return "Thu"
-    case "26": return "Fri"
-    default:
-        return "ERR \(start)"
-    }
+    return printFormatter.string(from: start)
 }
 
 for item in contents {
-    if item.eventId == "wwdc2020",
+    if item.eventId == eventID,
        item.type != "Lab by Appointment" {
         
         outputString += "\(item.id); "
@@ -59,6 +60,9 @@ for item in contents {
         
         let day = dateToDay(for: item.startTime)
         outputString += "\(day); "
+        
+        let dayOfTheWeek = dateToDayOfTheWeek(for: item.startTime)
+        outputString += "\(dayOfTheWeek); "
         
         if let media = item.media {
             outputString += "\(media.duration / 60); "
@@ -73,7 +77,7 @@ for item in contents {
 }
 
 let outputFolder = PlaygroundSupport.playgroundSharedDataDirectory
-let outputURL = outputFolder.appendingPathComponent("WWDC20.csv")
+let outputURL = outputFolder.appendingPathComponent("\(outputFile).csv")
 
 do {
     try FileManager.default.createDirectory(at: outputFolder, withIntermediateDirectories: true, attributes: nil)
@@ -82,5 +86,5 @@ do {
     print(error.localizedDescription)
 }
 
-print("Open WWDC.csv at:")
+print("Open \(outputFile).csv at:")
 print(outputURL.path.replacingOccurrences(of: " ", with: "\\ "))
