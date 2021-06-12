@@ -4,7 +4,7 @@ Nothing too snazzy, just a Numbers file that helps you track which dub dub sessi
 
 ![Image of Numbers tracking document](./TrackerPreview.png)
 
-[Download tracker file here](https://github.com/Matthewspear/WWDCTracker/releases/download/v1.0/WWDC20.numbers)
+[Download tracker file here](https://github.com/Matthewspear/WWDCTracker/releases/download/2.0/WWDC21.numbers)
 
 The Numbers file is setup with filtering out watched and uninterested session and provides a way to favourite.
 
