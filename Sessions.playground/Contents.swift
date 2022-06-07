@@ -3,8 +3,10 @@ import PlaygroundSupport
 
 let file = "contents.json"
 let url = URL(string: "https://api2021.wwdc.io/contents.json")!
-let eventID = "wwdc2021"
-let outputFile = "WWDC21"
+let eventID = "wwdc2022"
+let outputFile = "WWDC22"
+
+print("Hello")
 
 var useWeb = true
 
@@ -86,5 +88,5 @@ do {
     print(error.localizedDescription)
 }
 
-print("Open \(outputFile).csv at:")
-print(outputURL.path.replacingOccurrences(of: " ", with: "\\ "))
+print("Open \(outputFile).csv via:")
+print("open", outputURL.path.replacingOccurrences(of: " ", with: "\\ "))
