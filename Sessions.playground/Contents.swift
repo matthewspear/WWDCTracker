@@ -3,8 +3,8 @@ import UIKit
 
 let file = "contents.json"
 let url = URL(string: "https://api2021.wwdc.io/contents.json")!
-let eventID = "wwdc2024"
-let outputFile = "WWDC24"
+let eventID = "wwdc2025"
+let outputFile = "WWDC25"
 
 print("Hello")
 
